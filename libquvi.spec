@@ -4,7 +4,7 @@
 
 Name:           libquvi
 Version:        0.4.0
-Release:        1
+Release:        2
 Summary:        Library for parsing flash media stream URLs with C API
 Group:          Networking/Other
 License:        LGPLv2+
@@ -31,6 +31,7 @@ Summary: Files needed for building applications with libquvi
 Group: Development/Other
 Requires: %{libname} = %{version}-%{release}
 Provides: %{name}-devel = %{version}-%{release}
+Provides: quvi-devel = %{version}-%{release}
 
 %description -n %develname
 Files needed for building applications with libquvi.
