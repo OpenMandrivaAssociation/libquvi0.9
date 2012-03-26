@@ -3,8 +3,8 @@
 %define develname %mklibname -d quvi
 
 Name:           libquvi
-Version:        0.4.0
-Release:        2
+Version:        0.4.1
+Release:        1
 Summary:        Library for parsing flash media stream URLs with C API
 Group:          Networking/Other
 License:        LGPLv2+
