@@ -56,3 +56,18 @@ rm -f %buildroot%{_libdir}/*.la
 %{_libdir}/pkgconfig/*.pc
 %{_includedir}/*
 %{_mandir}/man3/*
+
+
+%changelog
+* Mon Mar 26 2012 Alexander Khrukin <akhrukin@mandriva.org> 0.4.1-1
++ Revision: 787114
+- version update 0.4.1
+
+* Tue Mar 06 2012 Alexander Khrukin <akhrukin@mandriva.org> 0.4.0-2
++ Revision: 782409
+- devel package provides quvi-devel
+
+* Tue Mar 06 2012 Alexander Khrukin <akhrukin@mandriva.org> 0.4.0-1
++ Revision: 782390
+- imported package libquvi
+
