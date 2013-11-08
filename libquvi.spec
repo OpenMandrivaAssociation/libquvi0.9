@@ -14,6 +14,7 @@ Source0:	http://downloads.sourceforge.net/quvi/%{name}-%{version}.tar.xz
 BuildRequires:	pkgconfig(libcurl) >= 7.18.2
 BuildRequires:	pkgconfig(libproxy-1.0)
 BuildRequires:	pkgconfig(glib-2.0)
+BuildRequires:	pkgconfig(libgcrypt)
 BuildRequires:	pkgconfig(libquvi-scripts-0.9)
 BuildRequires:	pkgconfig(lua) >= 5.1
 
