@@ -6,7 +6,7 @@
 Summary:	Library for parsing flash media stream URLs with C API
 Name:		libquvi
 Version:	0.9.4
-Release:	3
+Release:	4
 Group:		Networking/Other
 License:	LGPLv2+
 Url:		http://quvi.sourceforge.net/
