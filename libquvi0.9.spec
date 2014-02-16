@@ -37,7 +37,7 @@ Summary:	Files needed for building applications with libquvi
 Group:		Development/Other
 Requires:	%{libname} = %{version}-%{release}
 Provides:	%{name}-devel = %{version}-%{release}
-Provides:	quvi-devel = %{version}-%{release}
+Provides:	quvi%{api}-devel = %{version}-%{release}
 Obsoletes:	%{mklibname -d quvi} >= 0.9
 
 %description -n %{devname}
