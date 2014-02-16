@@ -1,16 +1,17 @@
+%define	oname	libquvi
 %define major	%{version}
 %define api	0.9
-%define libname	%mklibname quvi %major
-%define devname	%mklibname -d quvi
+%define libname	%mklibname quvi %{major}
+%define devname	%mklibname -d quvi %{api}
 
 Summary:	Library for parsing flash media stream URLs with C API
-Name:		libquvi
+Name:		libquvi%{api}
 Version:	0.9.4
-Release:	5
+Release:	6
 Group:		Networking/Other
-License:	LGPLv2+
+License:	AGPL
 Url:		http://quvi.sourceforge.net/
-Source0:	http://downloads.sourceforge.net/quvi/%{name}-%{version}.tar.xz
+Source0:	http://downloads.sourceforge.net/quvi/%{oname}-%{version}.tar.xz
 Patch0:		libquvi-0.9.1-headers-reinstall.patch
 BuildRequires:	pkgconfig(libcurl) >= 7.18.2
 BuildRequires:	pkgconfig(libproxy-1.0)
@@ -37,12 +38,13 @@ Group:		Development/Other
 Requires:	%{libname} = %{version}-%{release}
 Provides:	%{name}-devel = %{version}-%{release}
 Provides:	quvi-devel = %{version}-%{release}
+Obsoletes:	%{mklibname -d quvi} >= 0.9
 
 %description -n %{devname}
 Files needed for building applications with libquvi.
 
 %prep
-%setup -q
+%setup -q -n %{oname}-%{version}
 %apply_patches
 
 %build
@@ -52,12 +54,12 @@ Files needed for building applications with libquvi.
 %install
 %makeinstall_std
 
-%files -n %libname
-%{_libdir}/%{name}-%{api}-%{major}.so
+%files -n %{libname}
+%{_libdir}/%{oname}-%{api}-%{major}.so
 
-%files -n %devname
-%{_libdir}/%{name}-%{api}.so
-%{_libdir}/pkgconfig/*.pc
-%{_includedir}/*
+%files -n %{devname}
+%{_libdir}/%{oname}-%{api}.so
+%{_libdir}/pkgconfig/%{oname}-%{api}.pc
+%{_includedir}/quvi-%{api}
 %{_mandir}/man3/*
 %{_mandir}/man7/*
