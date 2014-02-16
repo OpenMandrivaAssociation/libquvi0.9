@@ -46,6 +46,7 @@ Files needed for building applications with libquvi.
 %prep
 %setup -q -n %{oname}-%{version}
 %apply_patches
+autoreconf -fiv
 
 %build
 %configure2_5x --disable-static
