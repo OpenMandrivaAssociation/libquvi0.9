@@ -1,17 +1,23 @@
-%define major	7
-%define libname	%mklibname quvi %major
-%define devname	%mklibname -d quvi
+%define	oname	libquvi
+%define major	%{version}
+%define api	0.9
+%define libname	%mklibname quvi %{major}
+%define devname	%mklibname -d quvi %{api}
 
 Summary:	Library for parsing flash media stream URLs with C API
-Name:		libquvi
-Version:	0.4.1
-Release:	2
+Name:		libquvi%{api}
+Version:	0.9.4
+Release:	1
 Group:		Networking/Other
-License:	LGPLv2+
+License:	AGPL
 Url:		http://quvi.sourceforge.net/
-Source0:	http://downloads.sourceforge.net/quvi/%{name}-%{version}.tar.xz
+Source0:	http://downloads.sourceforge.net/quvi/%{oname}-%{version}.tar.xz
+Patch0:		libquvi-0.9.1-headers-reinstall.patch
 BuildRequires:	pkgconfig(libcurl) >= 7.18.2
-BuildRequires:	pkgconfig(libquvi-scripts) >= 0.4.0
+BuildRequires:	pkgconfig(libproxy-1.0)
+BuildRequires:	pkgconfig(glib-2.0)
+BuildRequires:	pkgconfig(libgcrypt)
+BuildRequires:	pkgconfig(libquvi-scripts-0.9)
 BuildRequires:	pkgconfig(lua) >= 5.1
 
 %description
@@ -21,7 +27,7 @@ It is written in C and intended to be a cross-platform library.
 %package -n %{libname}
 Summary:	Shared library files libquvi
 Group:		Networking/Other
-Requires:	libquvi-scripts >= 0.4.0
+Requires:	libquvi-scripts%{api} >= 0.9
 
 %description -n %{libname}
 Shared library files libquvi.
@@ -31,13 +37,16 @@ Summary:	Files needed for building applications with libquvi
 Group:		Development/Other
 Requires:	%{libname} = %{version}-%{release}
 Provides:	%{name}-devel = %{version}-%{release}
-Provides:	quvi-devel = %{version}-%{release}
+Provides:	quvi%{api}-devel = %{version}-%{release}
+Obsoletes:	%{mklibname -d quvi} >= 0.9
 
 %description -n %{devname}
 Files needed for building applications with libquvi.
 
 %prep
-%setup -q
+%setup -q -n %{oname}-%{version}
+%apply_patches
+autoreconf -fiv
 
 %build
 %configure2_5x --disable-static
@@ -47,11 +56,11 @@ Files needed for building applications with libquvi.
 %makeinstall_std
 
 %files -n %{libname}
-%{_libdir}/%{name}.so.%{major}*
+%{_libdir}/%{oname}-%{api}-%{major}.so
 
 %files -n %{devname}
-%{_libdir}/%{name}.so
-%{_libdir}/pkgconfig/*.pc
-%{_includedir}/*
+%{_libdir}/%{oname}-%{api}.so
+%{_libdir}/pkgconfig/%{oname}-%{api}.pc
+%{_includedir}/quvi-%{api}
 %{_mandir}/man3/*
-
+%{_mandir}/man7/*
