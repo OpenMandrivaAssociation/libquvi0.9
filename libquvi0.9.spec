@@ -4,6 +4,8 @@
 %define libname %mklibname quvi %{major}
 %define devname %mklibname -d quvi %{api}
 
+%define _disable_rebuild_configure 1
+
 Summary:	Library for parsing flash media stream URLs with C API
 Name:		libquvi%{api}
 Version:	0.9.4
