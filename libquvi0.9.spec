@@ -48,7 +48,7 @@ Files needed for building applications with libquvi.
 
 %prep
 %setup -q -n %{oname}-%{version}
-%apply_patches
+%autopatch -p1
 autoreconf -fiv
 
 %build
