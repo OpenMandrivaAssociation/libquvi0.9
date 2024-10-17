@@ -12,7 +12,7 @@ Version:	0.9.4
 Release:	20
 Group:		Networking/Other
 License:	AGPL
-Url:		http://quvi.sourceforge.net/
+Url:		https://quvi.sourceforge.net/
 Source0:	http://downloads.sourceforge.net/quvi/%{oname}-%{version}.tar.xz
 Patch0:		libquvi-0.9.1-headers-reinstall.patch
 BuildRequires:	gettext-devel
