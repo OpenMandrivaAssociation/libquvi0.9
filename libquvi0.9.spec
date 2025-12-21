@@ -15,6 +15,11 @@ License:	AGPL
 Url:		https://quvi.sourceforge.net/
 Source0:	http://downloads.sourceforge.net/quvi/%{oname}-%{version}.tar.xz
 Patch0:		libquvi-0.9.1-headers-reinstall.patch
+BuildRequires:	autoconf
+BuildRequires:	automake
+BuildRequires:	libtool-base
+BuildRequires:	slibtool
+BuildRequires:	make
 BuildRequires:	gettext-devel
 BuildRequires:	pkgconfig(libcurl) >= 7.18.2
 BuildRequires:	pkgconfig(libproxy-1.0)
